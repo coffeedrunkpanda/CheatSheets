@@ -1,19 +1,18 @@
 # Pandas Cheat Sheet
 
-## Table of Contents
-
-0. [Imports](#imports)
-1. [Creating DataFrames](#creating-dataframes)
-2. [Creating Series](#creating-series)
-3. [Inspecting Data](#inspecting-data)
-4. [Selecting Data](#selecting-data)
-5. [Filtering](#filtering)
-6. [Data Manipulation](#data-manipulation)
-7. [Grouping & Aggregation](#grouping--aggregation)
-8. [Sorting](#sorting)
-9. [Merging & Joining](#merging--joining)
-10. [Statistics](#statistics)
-11. [I/O](#io)
+- [Pandas Cheat Sheet](#pandas-cheat-sheet)
+  - [Imports](#imports)
+  - [Creating DataFrames](#creating-dataframes)
+  - [Creating Series](#creating-series)
+  - [Inspecting Data](#inspecting-data)
+  - [Selecting Data](#selecting-data)
+  - [Filtering](#filtering)
+  - [Data Manipulation](#data-manipulation)
+  - [Grouping \& Aggregation](#grouping--aggregation)
+  - [Sorting](#sorting)
+  - [Merging \& Joining](#merging--joining)
+  - [Statistics](#statistics)
+  - [I/O](#io)
 
 ## Imports
 ```python
@@ -119,7 +118,7 @@ df.sum()               # Sum
 df.count()             # Count non-null values
 ```
 
-# I/O
+## I/O
 
 ```python
 # Read
