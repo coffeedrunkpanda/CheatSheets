@@ -1,5 +1,16 @@
 # Numpy CheatSheet
 
+- [Numpy CheatSheet](#numpy-cheatsheet)
+  - [Importing](#importing)
+  - [Creating Arrays \& Tensors](#creating-arrays--tensors)
+  - [Array Properties](#array-properties)
+  - [Indexing \& Slicing](#indexing--slicing)
+  - [Basic Operations (element-wise)](#basic-operations-element-wise)
+  - [Linear Algebra](#linear-algebra)
+  - [Reshaping](#reshaping)
+  - [Aggregate Functions](#aggregate-functions)
+  - [Useful Functions](#useful-functions)
+
 ## Importing
 
 ```python
@@ -63,14 +74,14 @@ np.linalg.eig(arr)                      # Eigenvalues/vectors
 np.eye(7)                               # Identity matrix
 ```
 
-# Reshaping
+## Reshaping
 ```python
 arr.reshape(2, 5)                       # Change shape
 arr.flatten()                           # 1D array
 np.concatenate([arr1, arr2])            # Combine arrays
 np.stack([arr1, arr2])                  # Stack arrays
 ```
-# Aggregate Functions
+## Aggregate Functions
 ```python
 np.sum(arr)                             # Sum
 np.mean(arr)                            # Average
