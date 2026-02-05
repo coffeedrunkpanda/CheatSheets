@@ -47,7 +47,7 @@ df.describe()          # Summary statistics
 df.shape               # (rows, columns)
 df.columns             # Column names
 df.dtypes              # Data types
-
+df.sample(frac = 0.1)  # Get sample
 series.isna()          # Booleans indicating NaN values
 ```
 
@@ -84,9 +84,16 @@ df.dropna()                   # Remove missing values
 ## Grouping & Aggregation
 
 ```python
+# Numerical
 df.groupby('A').sum()  # Group and sum
 df.groupby('A')['B'].mean()  # Group specific column
+df.groupby('A').agg({'B': 'mean', 'C': 'sum'}) # Apply aggregation to specific columns
+df.groupby('A').agg(['mean', 'max', 'min']) # Apply multiple aggregations 
 df.pivot_table(values='B', index='A', aggfunc='sum')
+
+# Categorical
+pd.crosstab(df['A'], df['B']) # Relationship between categorical variables (frequency)
+pd.crosstab(df['A'], df['B'], aggfunc="mean") 
 
 ```
 
