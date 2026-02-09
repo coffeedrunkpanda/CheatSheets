@@ -5,6 +5,9 @@
   - [2. Hypothesis Testing (Continuous Data)](#2-hypothesis-testing-continuous-data)
     - [One-sample T-Test](#one-sample-t-test)
     - [Two-Sample T-Test (Independent)](#two-sample-t-test-independent)
+    - [Paired Samples (Dependent Groups)](#paired-samples-dependent-groups)
+      - [Paired T-Test](#paired-t-test)
+      - [Wilcoxon Signed-Rank Test (Non-Parametric)](#wilcoxon-signed-rank-test-non-parametric)
     - [One-Way ANOVA](#one-way-anova)
     - [Mann-Whitney U Test (Non-Parametric)](#mann-whitney-u-test-non-parametric)
   - [3. Hypothesis Testing (Categorical Data)](#3-hypothesis-testing-categorical-data)
@@ -57,9 +60,41 @@ stat, p_val = stats.ttest_ind(group_a, group_b, equal_var=False)
 ```
 > **Docs:** [Scipy ttest_ind](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html)
 
+### Paired Samples (Dependent Groups)
+Comparing the same subjects at two different times (e.g., Before vs. After) or matched pairs.
+
+#### Paired T-Test
+Comparing the same subjects at two different times (e.g., Before vs. After) or matched pairs.
+Checks if the mean difference between paired observations is zero. Used when the *differences* are normally distributed.
+
+```python
+from scipy import stats
+
+before = [30, 29, 31, 32, 33]
+after  = [28, 27, 29, 31, 30]
+
+# ttest_rel = "Related" samples
+stat, p_val = stats.ttest_rel(before, after)
+print(f"P-value: {p_val:.4f}")
+
+```
+> **Docs:** [Scipy ttest_rel](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_rel.html)
+
+#### Wilcoxon Signed-Rank Test (Non-Parametric)
+
+The alternative to the Paired T-Test when the differences are **not normal**. It ranks the magnitude of the changes.
+
+```python
+from scipy import stats
+
+# checks if the distribution of the differences is symmetric around zero
+stat, p_val = stats.wilcoxon(before, after)
+```
+> **Docs:** [Scipy Wilcoxon](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html)
+
 ### One-Way ANOVA
 
-Compares means across 3+ groups. If P < 0.05, at least one group is different. You need post-hoc tests (like Tukey) to find *which* one.
+Compares means across 3+ groups. If P < 0.05, at least one group is different. You need post-hoc tests (e.g. Tukey's HSD) to find *which* one.
 
 ```python
 from scipy import stats
@@ -72,6 +107,7 @@ stat, p_val = stats.f_oneway(group_1, group_2, group_3)
 ```
 > **Docs:** [Scipy f_oneway](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.f_oneway.html)
 
+> **Note:** There are other types of ANOVA such as 
 ### Mann-Whitney U Test (Non-Parametric)
 
 The alternative to the T-test when data is **not normal** (skewed) or sample size is small. Compares medians/rankings rather than means.
@@ -83,6 +119,7 @@ stat, p_val = stats.mannwhitneyu(group_a, group_b)
 ```
 > **Docs:** [Scipy mannwhitneyu](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html)
 
+> **Note:** If you need to analyze the magnitude or exact numerical differences (e.g. revenue), use bootstrapping instead of Mann-Whitney.
 
 
 ## 3. Hypothesis Testing (Categorical Data)
