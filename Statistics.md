@@ -146,8 +146,12 @@ print(f"P-value: {p:.4f}")
 ```
 > **Docs:** [Scipy chi2_contingency](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chi2_contingency.html)
 
+> **Note:** For 2 groups, proportions_ztest and chi2_contingency give the same p-value. Use Z-test if you need a one-sided confidence interval (e.g. "B is > 5% better than A").
 
 ## More info
 
 * [ANOVA - ES](https://cienciadedatos.net/documentos/pystats09-analisis-de-varianza-anova-python)
 * [Statistics with Python](https://cienciadedatos.net/en/statistics-python)
+* [Byasian A/B Testing](https://www.pymc.io/projects/examples/en/latest/causal_inference/bayesian_ab_testing_introduction.html)
+* [Byasian A/B Testing at Scale](https://www.pymc-labs.com/blog-posts/bayesian-inference-at-scale-running-ab-tests-with-millions-of-observations)
+* [Bootstrapping](https://www.youtube.com/watch?v=Xz0x-8-cgaQ)
